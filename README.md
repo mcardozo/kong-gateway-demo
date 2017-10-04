@@ -77,7 +77,14 @@
             }
             ```
             
-        - PAYLOAD: `"iss": "<key>"`
+        - PAYLOAD: 
+        
+            ```json
+            {
+              "iss": "<key>",
+              "name": "<name>"
+            }
+            ```
         
         - VERIFY SIGNATURE
         
