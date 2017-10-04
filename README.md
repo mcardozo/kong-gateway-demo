@@ -27,6 +27,8 @@
 
 	`$ http httpbin.org/headers`
 
+### APIS
+
 - Registrar API
 
 	`$ http POST $KONG_HOST:8001/apis name=demo hosts=$KONG_HOST upstream_url=http://httpbin.org`
@@ -35,18 +37,23 @@
 
 	`$ http $KONG_HOST:8000/headers`
 
+
+### PLUGINS
+
+#### JSON Web Tokens
+
 - Activar plugin [JWT](https://getkong.org/plugins/jwt/)
 
 	`$ http POST $KONG_HOST:8001/apis/demo2/plugins name=jwt config.secret_is_base64=true`
 
 - Test JWT
-https://httpie.org/
+
 	`$ http $KONG_HOST:8000/headers`
 
 - Crear usuario
 
 	`$ http POST $KONG_HOST:8001/consumers username=<user>`
-https://httpie.org/
+
 - Crear credenciales JWT
 
 	`$ echo '{}' | http POST $KONG_HOST:8001/consumers/<user>/jwt`
@@ -94,10 +101,14 @@ https://httpie.org/
 - Consumir APIS
 
     `$ http $KONG_HOST:8000/headers 'Authorization:Bearer <token>'`
+
+#### Rate Limits
   
 - [Rate limits](https://getkong.org/plugins/rate-limiting/)
 
     `$ http POST $KONG_HOST:8001/apis/headers/plugins name=rate-limiting consumer_id=<consumer_id> config.minute=10`
+
+#### StatsD
 
 - [StatsD](https://getkong.org/plugins/statsd/)
 
