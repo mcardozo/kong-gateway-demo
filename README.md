@@ -6,13 +6,20 @@
 
 ## Implementacion en Docker
 
+### Dependencias
+
++ [Docker Compose](https://docs.docker.com/compose/install/)
++ [Httpie](https://httpie.org/)
+
+### Lavantar Kong
+
 - Correr el comando sobre la carpeta _Docker_
 
 	`$ docker-compose up -d`
 
 - Test Microservicio
 
-	`$ export KONG_HOST=127.0.0.1
+	`$ export KONG_HOST=127.0.0.1`
 
 	`$ http $KONG_HOST:8000`
 
@@ -33,13 +40,13 @@
 	`$ http POST $KONG_HOST:8001/apis/demo2/plugins name=jwt config.secret_is_base64=true`
 
 - Test JWT
-
+https://httpie.org/
 	`$ http $KONG_HOST:8000/headers`
 
 - Crear usuario
 
 	`$ http POST $KONG_HOST:8001/consumers username=<user>`
-
+https://httpie.org/
 - Crear credenciales JWT
 
 	`$ echo '{}' | http POST $KONG_HOST:8001/consumers/<user>/jwt`
@@ -52,7 +59,7 @@
 
 - Generar Token:
  
-    1. [Debugger](https://jwt.io/)
+    1. [JSON Web Tokens Debugger](https://jwt.io/)
 
         - HEADER
         
